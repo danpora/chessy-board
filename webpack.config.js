@@ -28,12 +28,14 @@ module.exports = {
             options: {
               modules: true,
             },
-          }
-        ]
+          },
+        ],
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader'],
+        test: /\.png$/,
+        use: {
+          loader: 'url-loader'
+        },
       },
     ],
   },
