@@ -1,6 +1,6 @@
 {
   "name": "chessy-board",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "a light react chess board",
   "main": "build/index.js",
   "repository": {
