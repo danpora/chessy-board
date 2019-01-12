@@ -1,11 +1,11 @@
 {
   "name": "chessy-board",
-  "version": "1.1.0",
+  "version": "0.1.0",
   "description": "a light react chess board",
   "main": "build/index.js",
   "repository": {
     "type": "git",
-    "url": "<git_repo_url>"
+    "url": "https://github.com/danpora/chessy-board"
   },
   "peerDependencies": {
     "react": "^16.4.0"
