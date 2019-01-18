@@ -50,9 +50,9 @@ class Board extends React.Component {
         return orientedColIndexes.map((col) => {
           const squareColor = getSquareColor(col, row);
           
-          const squareElements =
-            matrix && matrix[row] && matrix[row][col] || 
-            INIT_BOARD[row][col];
+          const squareElements = matrix && matrix[row] 
+            ? matrix[row][col] 
+            : INIT_BOARD[row][col];
 
           const isSelected = highLightSelections.some((square) => {
             return square === `${col}${row}`;
