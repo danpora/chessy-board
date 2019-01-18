@@ -122,3 +122,4 @@ const getSquareColor = (col, row) => {
 
 export default Board;
 export * from './utils';
+export * from './piece'
