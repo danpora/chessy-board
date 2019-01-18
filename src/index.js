@@ -8,6 +8,7 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.gridRef = React.createRef();
+    this.updateBoardDimensions = this.updateBoardDimensions.bind(this);
   }
 
   componentDidMount() {
@@ -19,14 +20,14 @@ class Board extends React.Component {
     window.removeEventListener('resize', this.updateBoardDimensions);
   }
 
-  updateBoardDimensions() {
+  updateBoardDimensions() {    
     const gridHeight = this.gridRef.current.clientHeight;
     const gridWidth = this.gridRef.current.clientWidth;
     const sideLength =
       window.innerWidth < 750
         ? Math.max(gridHeight, gridWidth || gridHeight)
         : Math.min(gridHeight, gridWidth || gridHeight);
-
+    
     this.gridRef.current.style.width = sideLength + 'px';
     this.gridRef.current.style.height = sideLength + 'px';
   }
@@ -76,6 +77,9 @@ class Board extends React.Component {
       });
 
     const loaderClass = this.props.isLoading.ownMove ? 'loader' : null;
+
+    console.log('this.gridRef::', this.gridRef)
+    
     return (
       <div
         ref={this.gridRef}
