@@ -1,8 +1,12 @@
 {
   "name": "chessy-board",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "A light react chess board",
-  "keywords": ["chess", "react", "board"],
+  "keywords": [
+    "chess",
+    "react",
+    "board"
+  ],
   "main": "build/index.js",
   "repository": {
     "type": "git",
