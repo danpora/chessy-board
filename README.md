@@ -1,7 +1,7 @@
 # Chessy Board
 A light react chess board. 
 
-#Installation and Usage
+# Installation and Usage
 The simplest way to use chessy-board is to install it from npm.
 
 ```
@@ -10,7 +10,7 @@ npm install --save chessy-board
 
 Then use it in your app:
 
-```
+```js
 import React from 'react';
 import Board from 'chessy-board';
 
@@ -52,7 +52,7 @@ class App extends React.Component {
 }
 ```
 
-#Props
+# Props
 Props you may require/may need to specify:
 
 * `className` - apply a class name to board
@@ -63,5 +63,5 @@ Props you may require/may need to specify:
 * `highLightSelections` - highlight selected pieces
 * `highLightOptions` - highlight possible move options for selected piece
 
-#License
+# License
 ISC Licensed.
