@@ -7,7 +7,7 @@
     "react",
     "board"
   ],
-  "main": "build/index.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/danpora/chessy-board"
