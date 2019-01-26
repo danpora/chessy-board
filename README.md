@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/chessy-board.svg)](https://badge.fury.io/js/chessy-board)
+[![npm version](https://badge.fury.io/js/chessy-board.svg)](https://www.npmjs.com/package/chessy-board)
 
 # Chessy Board
 A light react chess board. [Live example on codesandbox](https://codesandbox.io/s/oj33xyo1xy).
