@@ -1,5 +1,5 @@
 # Chessy Board
-A light react chess board. 
+A light react chess board. [Live example on codesandbox](https://codesandbox.io/s/oj33xyo1xy).
 
 # Installation and Usage
 The simplest way to use chessy-board is to install it from npm.
