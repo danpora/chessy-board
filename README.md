@@ -35,8 +35,10 @@ class App extends React.Component {
       }
   }
 
-  onSquareClick = ({row, col, elements}) => { }
-
+  onSquareClick ({ row, col, elements }) {
+    /* Do something with target square.. */
+  }
+  
   render() {
     const { selectedOption } = this.state;
 
