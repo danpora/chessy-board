@@ -11,12 +11,24 @@
   transition-timing-function: ease-out;
 }
 
-.loader {
+.loading {
   opacity: 0.3;
 }
 
-.moveLoader {
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #6b6b6b;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+.spinner-container {
   position: absolute;
-  top: 45%;
-  left: 45%;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

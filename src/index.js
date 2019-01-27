@@ -1,6 +1,5 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { INIT_BOARD, BOARD_INDEXES, SQUARE_COLOR, NORMAL_BOARD_PARAMS } from './constants';
+import { BOARD_INDEXES, SQUARE_COLOR, NORMAL_BOARD_PARAMS } from './constants';
 import { Square } from './square';
 import styles from './board.css';
 
@@ -73,25 +72,17 @@ class Board extends React.Component {
           );
         });
       });
-
-    const loaderClass = this.props.isLoading.ownMove ? 'loader' : null;
-
-    console.log('this.gridRef::', this.gridRef)
     
     return (
       <div
         ref={this.gridRef}
         className={`${className} ${styles.boardContainer} ${
-          styles[loaderClass]
+          styles[this.props.isLoading ? 'loading' : null]
         }`}
         style={{ minWidth: '300px', minHeight: '300px' }}
       >
         <BoardGrid />
-        {this.props.isLoading.ownMove && (
-          <div className={styles.moveLoader}>
-            <FontAwesomeIcon icon={['fas', 'spinner']} size={'3x'} spin />
-          </div>
-        )}
+        { this.props.isLoading && <div className={`${styles.spinner} ${styles['spinner-container']}`}  /> }
       </div>
     );
   }

@@ -42,7 +42,7 @@ class App extends React.Component {
 
     return (
         <Board
-          isLoading={{ board: false, ownMove: false}}
+          isLoading={false}
           matrix={this.state.matrix}
           onClick={this.onSquareClick}
           orientation={0}
