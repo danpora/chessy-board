@@ -5,7 +5,9 @@
   "keywords": [
     "chess",
     "react",
-    "board"
+    "board",
+    "chessboard",
+    "javascript"
   ],
   "main": "board.js",
   "repository": {
