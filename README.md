@@ -68,4 +68,4 @@ Props you may require/may need to specify:
 * `highLightOptions` - highlight possible move options for selected piece
 
 # License
-ISC Licensed.
+Chessy Board is [MIT Licensed](https://github.com/danpora/chessy-board/blob/master/LICENCE).
