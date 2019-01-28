@@ -3,89 +3,67 @@ import { BOARD_INDEXES, SQUARE_COLOR, NORMAL_BOARD_PARAMS } from './constants';
 import { Square } from './square';
 import styles from './board.css';
 
-class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    this.gridRef = React.createRef();
-    this.updateBoardDimensions = this.updateBoardDimensions.bind(this);
-  }
+function Board(props) {
+  const {
+    className = '',
+    matrix,
+    orientation,
+    onClick = () => {},
+    highLightSelections,
+    highLightOptions,
+  } = props;
 
-  componentDidMount() {
-    this.updateBoardDimensions();
-    window.addEventListener('resize', this.updateBoardDimensions);
-  }
+  const { orientedRowIndexes, orientedColIndexes } = getOrientedBoardIndexes(
+    orientation,
+  );
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateBoardDimensions);
-  }
+  const BoardGrid = () =>
+    orientedRowIndexes.map((row) => {
+      return orientedColIndexes.map((col) => {
+        const squareColor = getSquareColor(col, row);
 
-  updateBoardDimensions() {    
-    const gridHeight = this.gridRef.current.clientHeight;
-    const gridWidth = this.gridRef.current.clientWidth;
-    const sideLength =
-      window.innerWidth < 750
-        ? Math.max(gridHeight, gridWidth || gridHeight)
-        : Math.min(gridHeight, gridWidth || gridHeight);
-    
-    this.gridRef.current.style.width = sideLength + 'px';
-    this.gridRef.current.style.height = sideLength + 'px';
-  }
+        const squareElements = matrix && matrix[row] && matrix[row][col];
 
-  render() {
-    const {
-      className,
-      matrix,
-      orientation,
-      onClick = () => {},
-      highLightSelections,
-      highLightOptions,
-    } = this.props;
-
-    const { orientedRowIndexes, orientedColIndexes } = getOrientedBoardIndexes(
-      orientation,
-    );
-
-    const BoardGrid = () =>
-      orientedRowIndexes.map((row) => {
-        return orientedColIndexes.map((col) => {
-          const squareColor = getSquareColor(col, row);
-          
-          const squareElements = matrix && matrix[row] && matrix[row][col];
-
-          const isSelected = highLightSelections.some((square) => {
-            return square === `${col}${row}`;
-          });
-
-          const isOption = highLightOptions.some((square) => {
-            return square === `${col}${row}`;
-          });
-
-          return (
-            <Square
-              key={`${row}${col}`}
-              color={squareColor}
-              elements={squareElements}
-              location={{ row, col }}
-              onClick={onClick}
-              highlight={{ isSelected, isOption }}
-            />
-          );
+        const isSelected = highLightSelections.some((square) => {
+          return square === `${col}${row}`;
         });
+
+        const isOption = highLightOptions.some((square) => {
+          return square === `${col}${row}`;
+        });
+
+        return (
+          <Square
+            key={`${row}${col}`}
+            color={squareColor}
+            elements={squareElements}
+            location={{ row, col }}
+            onClick={onClick}
+            highlight={{ isSelected, isOption }}
+          />
+        );
       });
-    
-    return (
+    });
+
+  return (
+    <div className={styles.topContainer}>
       <div
-        ref={this.gridRef}
-        className={`${className} ${styles.boardContainer} ${
-          styles[this.props.isLoading ? 'loading' : null]
-        }`}
-        style={{ minWidth: '300px', minHeight: '300px' }}
+        className={`
+          ${className} ${styles.boardContainer} 
+          ${styles[props.isLoading ? 'loading' : null]}
+        `}
       >
-        <BoardGrid />
-        { this.props.isLoading && <div className={`${styles.spinner} ${styles['spinner-container']}`}  /> }
+        <div className={styles.gridContainer}>
+          <BoardGrid />
+          {props.isLoading && (
+            <div
+              className={`${styles.spinner} ${styles['spinner-container']}`}
+            />
+          )}
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 const getOrientedBoardIndexes = (orientation) => ({
@@ -115,4 +93,4 @@ const getSquareColor = (col, row) => {
 
 export default Board;
 export * from './utils';
-export * from './piece'
+export * from './piece';
