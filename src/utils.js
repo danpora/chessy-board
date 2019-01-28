@@ -1,6 +1,4 @@
-import update from 'react-addons-update';
-import { getPieceState } from './piece'
-import { BOARD_INDEXES } from './constants'
+import { BOARD_INDEXES } from './constants';
 
 export const getEmptyBoard = () => {
   const board = {};
@@ -11,56 +9,92 @@ export const getEmptyBoard = () => {
 
   for (let row of BOARD_INDEXES.row) {
     for (let col of BOARD_INDEXES.col) {
-      board[row][col] = null
+      board[row][col] = null;
     }
   }
 
   return board;
 };
 
-export const getInitializedBoard = (emptyBoard) => {
-  const initBoard = update(emptyBoard, {
-    ['1']: {
-      ['a']: { $set: getPieceState('rook', 'white')},
-      ['b']: { $set: getPieceState('knight', 'white')},
-      ['c']: { $set: getPieceState('bishop', 'white') },
-      ['d']: { $set: getPieceState('queen', 'white')} ,
-      ['e']: { $set: getPieceState('king', 'white')} ,
-      ['f']: { $set: getPieceState('bishop', 'white')},
-      ['g']: { $set: getPieceState('knight', 'white') },
-      ['h']: { $set: getPieceState('rook', 'white') }
-    } ,
-    ['2']: {
-      ['a']: { $set: getPieceState('pawn', 'white') },
-      ['b']: { $set: getPieceState('pawn', 'white') },
-      ['c']: { $set: getPieceState('pawn', 'white') },
-      ['d']: { $set: getPieceState('pawn', 'white') },
-      ['e']: { $set: getPieceState('pawn', 'white') },
-      ['f']: { $set: getPieceState('pawn', 'white') },
-      ['g']: { $set: getPieceState('pawn', 'white') },
-      ['h']: { $set: getPieceState('pawn', 'white') }
-    } ,
-    ['8']: {
-      ['a']: { $set: getPieceState('rook', 'black')},
-      ['b']: { $set: getPieceState('knight', 'black')},
-      ['c']: { $set: getPieceState('bishop', 'black') },
-      ['d']: { $set: getPieceState('queen', 'black')} ,
-      ['e']: { $set: getPieceState('king', 'black')} ,
-      ['f']: { $set: getPieceState('bishop', 'black')},
-      ['g']: { $set: getPieceState('knight', 'black') },
-      ['h']: { $set: getPieceState('rook', 'black') }
-    } ,
-    ['7']: {
-      ['a']: { $set: getPieceState('pawn', 'black')},
-      ['b']: { $set: getPieceState('pawn', 'black') },
-      ['c']: { $set: getPieceState('pawn', 'black') },
-      ['d']: { $set: getPieceState('pawn', 'black') },
-      ['e']: { $set: getPieceState('pawn', 'black') },
-      ['f']: { $set: getPieceState('pawn', 'black') },
-      ['g']: { $set: getPieceState('pawn', 'black') },
-      ['h']: { $set: getPieceState('pawn', 'black') }
-    } ,
-  })
-
-return initBoard
-}
+export const getInitializedBoard = () => ({
+  '1': {
+    a: { color: 'white', role: 'rook' },
+    b: { color: 'white', role: 'knight' },
+    c: { color: 'white', role: 'bishop' },
+    d: { color: 'white', role: 'king' },
+    e: { color: 'white', role: 'queen' },
+    f: { color: 'white', role: 'bishop' },
+    g: { color: 'white', role: 'knight' },
+    h: { color: 'white', role: 'rook' },
+  },
+  '2': {
+    a: { color: 'white', role: 'pawn' },
+    b: { color: 'white', role: 'pawn' },
+    c: { color: 'white', role: 'pawn' },
+    d: { color: 'white', role: 'pawn' },
+    e: { color: 'white', role: 'pawn' },
+    f: { color: 'white', role: 'pawn' },
+    g: { color: 'white', role: 'pawn' },
+    h: { color: 'white', role: 'pawn' },
+  },
+  '3': {
+    a: null,
+    b: null,
+    c: null,
+    d: null,
+    e: null,
+    f: null,
+    g: null,
+    h: null,
+  },
+  '4': {
+    a: null,
+    b: null,
+    c: null,
+    d: null,
+    e: null,
+    f: null,
+    g: null,
+    h: null,
+  },
+  '5': {
+    a: null,
+    b: null,
+    c: null,
+    d: null,
+    e: null,
+    f: null,
+    g: null,
+    h: null,
+  },
+  '6': {
+    a: null,
+    b: null,
+    c: null,
+    d: null,
+    e: null,
+    f: null,
+    g: null,
+    h: null,
+  },
+  '7': {
+    a: { color: 'black', role: 'pawn' },
+    b: { color: 'black', role: 'pawn' },
+    c: { color: 'black', role: 'pawn' },
+    d: { color: 'black', role: 'pawn' },
+    e: { color: 'black', role: 'pawn' },
+    f: { color: 'black', role: 'pawn' },
+    g: { color: 'black', role: 'pawn' },
+    h: { color: 'black', role: 'pawn' },
+  },
+  '8': {
+    a: { color: 'black', role: 'rook' },
+    b: { color: 'black', role: 'knight' },
+    c: { color: 'black', role: 'bishop' },
+    d: { color: 'black', role: 'king' },
+    e: { color: 'black', role: 'queen' },
+    f: { color: 'black', role: 'bishop' },
+    g: { color: 'black', role: 'knight' },
+    h: { color: 'black', role: 'rook' },
+  },
+});
