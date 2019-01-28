@@ -46,10 +46,10 @@ function Board(props) {
     });
 
   return (
-    <div className={styles.topContainer}>
+    <div className={`${className} ${styles.topContainer}`}>
       <div
         className={`
-          ${className} ${styles.boardContainer} 
+          ${styles.boardContainer} 
           ${styles[props.isLoading ? 'loading' : null]}
         `}
       >
