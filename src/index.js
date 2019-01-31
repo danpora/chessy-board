@@ -13,38 +13,6 @@ function Board(props) {
     highLightOptions,
   } = props;
 
-  const { orientedRowIndexes, orientedColIndexes } = getOrientedBoardIndexes(
-    orientation,
-  );
-
-  const BoardGrid = () =>
-    orientedRowIndexes.map((row) => {
-      return orientedColIndexes.map((col) => {
-        const squareColor = getSquareColor(col, row);
-
-        const squareElements = matrix && matrix[row] && matrix[row][col];
-
-        const isSelected = highLightSelections.some((square) => {
-          return square === `${col}${row}`;
-        });
-
-        const isOption = highLightOptions.some((square) => {
-          return square === `${col}${row}`;
-        });
-
-        return (
-          <Square
-            key={`${row}${col}`}
-            color={squareColor}
-            elements={squareElements}
-            location={{ row, col }}
-            onClick={onClick}
-            highlight={{ isSelected, isOption }}
-          />
-        );
-      });
-    });
-
   return (
     <div className={`${className} ${styles.topContainer}`}>
       <div
@@ -54,7 +22,13 @@ function Board(props) {
         `}
       >
         <div className={styles.gridContainer}>
-          <BoardGrid />
+          <BoardGrid 
+            matrix={matrix}
+            orientation={orientation}
+            onClick={onClick}
+            highLightOptions={highLightOptions}
+            highLightSelections={highLightSelections}
+          />
           {props.isLoading && (
             <div
               className={`${styles.spinner} ${styles['spinner-container']}`}
@@ -64,6 +38,47 @@ function Board(props) {
       </div>
     </div>
   );
+}
+
+function BoardGrid (props) {
+  const { matrix, orientation, onClick, highLightSelections, highLightOptions } = props;
+
+  const squares = [];
+
+  const { orientedRowIndexes, orientedColIndexes } = 
+  getOrientedBoardIndexes(
+    orientation,
+  );
+
+  for (let row of orientedRowIndexes) {
+    for (let col of orientedColIndexes) {
+
+      const squareColor = getSquareColor(col, row);
+
+      const squareElements = matrix && matrix[row] && matrix[row][col];
+
+      const isSelected = highLightSelections.some((square) => {
+        return square === `${col}${row}`;
+      });
+
+      const isOption = highLightOptions.some((square) => {
+        return square === `${col}${row}`;
+      });
+
+      squares.push(
+        <Square
+          key={`${row}${col}`}
+          color={squareColor}
+          elements={squareElements}
+          location={{ row, col }}
+          onClick={onClick}
+          highlight={{ isSelected, isOption }}
+        />
+      );
+    }
+  }
+
+  return squares;
 }
 
 const getOrientedBoardIndexes = (orientation) => ({
