@@ -2,7 +2,7 @@ import React from 'react';
 import { Piece } from '../piece'
 import styles from './square.css'
 
-export const Square = props => {
+export function Square (props) {
   const { elements } = props
 
   return (
@@ -14,9 +14,10 @@ export const Square = props => {
   );
 }
 
-const SquareWrap = props => {
+function SquareWrap (props) {
   const selectedClass = props.highlight.isSelected && styles.selectedHighlight;
-  const optionClass = props.highlight.isOption && styles.optionHighlight
+  const optionClass = props.highlight.isOption && styles.optionHighlight;
+
   return (
     <div 
       id={`${props.location.col}${props.location.row}`}

@@ -3,7 +3,7 @@ import { Square } from './square';
 import styles from './board.css';
 import { getOrientedBoardIndexes, getSquareColor } from './utils';
 
-function Board(props) {
+function Board (props) {
   
   const {
     className = '',
