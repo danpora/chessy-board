@@ -1,6 +1,6 @@
 {
   "name": "chessy-board",
-  "version": "0.7.9",
+  "version": "0.7.10",
   "description": "A light react chess board",
   "keywords": [
     "chess",
