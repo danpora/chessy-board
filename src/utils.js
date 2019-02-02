@@ -1,5 +1,19 @@
 import { BOARD_INDEXES } from './constants';
 
+export const getOrientedBoardIndexes = (orientation) => ({
+  orientedRowIndexes: orientation
+    ? [...BOARD_INDEXES.row]
+    : [...BOARD_INDEXES.row].reverse(),
+  orientedColIndexes: orientation
+    ? [...BOARD_INDEXES.col].reverse()
+    : [...BOARD_INDEXES.col],
+});
+
+export const getSquareColor = (col, row) => 
+  (col.charCodeAt() + row.charCodeAt()) % 2 === 0 
+    ? 'white' 
+    : 'black';
+
 export const getEmptyBoard = () => {
   const board = {};
 

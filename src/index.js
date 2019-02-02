@@ -1,9 +1,10 @@
 import React from 'react';
-import { BOARD_INDEXES } from './constants';
 import { Square } from './square';
 import styles from './board.css';
+import { getOrientedBoardIndexes, getSquareColor } from './utils';
 
 function Board(props) {
+  
   const {
     className = '',
     matrix,
@@ -76,20 +77,6 @@ function BoardGrid (props) {
 
   return squares;
 }
-
-const getOrientedBoardIndexes = (orientation) => ({
-  orientedRowIndexes: orientation
-    ? [...BOARD_INDEXES.row]
-    : [...BOARD_INDEXES.row].reverse(),
-  orientedColIndexes: orientation
-    ? [...BOARD_INDEXES.col].reverse()
-    : [...BOARD_INDEXES.col],
-});
-
-const getSquareColor = (col, row) => 
-  (col.charCodeAt() + row.charCodeAt()) % 2 === 0 
-    ? 'white' 
-    : 'black';
 
 export default Board;
 export * from './utils';
