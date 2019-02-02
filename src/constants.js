@@ -3,16 +3,6 @@ export const BOARD_INDEXES = {
   col: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 };
 
-export const SQUARE_COLOR = {
-  0: 'white',
-  1: 'black'
-};
-
-export const NORMAL_BOARD_PARAMS = {
-  row: 48,
-  col: 96
-}
-
 export const INIT_BOARD = {
   '1': {
     a: {

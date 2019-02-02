@@ -1,5 +1,5 @@
 import React from 'react';
-import { BOARD_INDEXES, SQUARE_COLOR, NORMAL_BOARD_PARAMS } from './constants';
+import { BOARD_INDEXES } from './constants';
 import { Square } from './square';
 import styles from './board.css';
 
@@ -51,7 +51,6 @@ function BoardGrid (props) {
 
       const squareName = `${col}${row}`;
       const squareColor = getSquareColor(col, row);
-
       const squareElements = matrix && matrix[row] && matrix[row][col];
 
       const isSelected = highLightSelections.some((square) => {
@@ -87,21 +86,10 @@ const getOrientedBoardIndexes = (orientation) => ({
     : [...BOARD_INDEXES.col],
 });
 
-// Map ASCII 'a' to 1, 'b' to 2 and so on
-const getNormalizedSquareLocation = (col, row) => ({
-  normalizedCol: col.charCodeAt() - NORMAL_BOARD_PARAMS.col,
-  normalizedRow: row.charCodeAt() - NORMAL_BOARD_PARAMS.row,
-});
-
-const getSquareColor = (col, row) => {
-  const { normalizedRow, normalizedCol } = getNormalizedSquareLocation(
-    col,
-    row,
-  );  
-  const squareIndexModulus = 1 - ((normalizedCol + normalizedRow) % 2);
-
-  return SQUARE_COLOR[squareIndexModulus];
-};
+const getSquareColor = (col, row) => 
+  (col.charCodeAt() + row.charCodeAt()) % 2 === 0 
+    ? 'white' 
+    : 'black';
 
 export default Board;
 export * from './utils';
