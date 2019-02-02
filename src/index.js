@@ -43,31 +43,28 @@ function Board(props) {
 function BoardGrid (props) {
   const { matrix, orientation, onClick, highLightSelections, highLightOptions } = props;
 
+  const { orientedRowIndexes, orientedColIndexes } = getOrientedBoardIndexes(orientation);
+  
   const squares = [];
-
-  const { orientedRowIndexes, orientedColIndexes } = 
-  getOrientedBoardIndexes(
-    orientation,
-  );
-
   for (let row of orientedRowIndexes) {
     for (let col of orientedColIndexes) {
 
+      const squareName = `${col}${row}`;
       const squareColor = getSquareColor(col, row);
 
       const squareElements = matrix && matrix[row] && matrix[row][col];
 
       const isSelected = highLightSelections.some((square) => {
-        return square === `${col}${row}`;
+        return square === squareName;
       });
 
       const isOption = highLightOptions.some((square) => {
-        return square === `${col}${row}`;
+        return square === squareName;
       });
 
       squares.push(
         <Square
-          key={`${row}${col}`}
+          key={squareName}
           color={squareColor}
           elements={squareElements}
           location={{ row, col }}
@@ -100,7 +97,7 @@ const getSquareColor = (col, row) => {
   const { normalizedRow, normalizedCol } = getNormalizedSquareLocation(
     col,
     row,
-  );
+  );  
   const squareIndexModulus = 1 - ((normalizedCol + normalizedRow) % 2);
 
   return SQUARE_COLOR[squareIndexModulus];
