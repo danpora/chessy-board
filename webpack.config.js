@@ -1,6 +1,6 @@
 var path = require('path');
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/Board.js',
   output: {
     path: path.resolve(__dirname, ''),
     filename: 'board.js',
