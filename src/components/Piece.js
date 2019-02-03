@@ -1,14 +1,13 @@
 import React from 'react';
-import styles from './piece.css'
 
 export function Piece (props) {
-  const { elements, className } = props
+  const { elements } = props
   
   return (
     elements
       ? <img 
           alt={elements.role}
-          className={className || styles.img}
+          style={{ width: '100%' }}
           src={require(`../assets/images/pieces/${elements.color}_${elements.role}.png`)}
         />
       : null
@@ -18,4 +17,4 @@ export function Piece (props) {
 export const getPieceState = (role, color) => ({
   role,
   color
-})
+});

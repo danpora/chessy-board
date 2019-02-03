@@ -1,6 +1,6 @@
 import React from 'react';
-import { Piece } from '../piece'
-import styles from './square.css'
+import { Piece } from './Piece'
+import styles from './Square.css'
 
 export function Square (props) {
   const { elements } = props
