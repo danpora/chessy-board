@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { Square } from './components/Square';
-import styles from './Board.css';
 import { getOrientedBoardIndexes, getSquareColor } from './utils';
+
+import styles from './Board.css';
 
 function Board (props) {
   
@@ -80,4 +82,3 @@ function BoardGrid (props) {
 
 export default Board;
 export * from './utils';
-export * from './components/Piece';
