@@ -14,6 +14,22 @@ export const getSquareColor = (col, row) =>
     ? 'white' 
     : 'black';
 
+export const isColorValid = (color) => ['black', 'white'].includes(color);
+
+export const isRoleValid = (role) => [
+  'pawn', 
+  'rook',
+  'knight',
+  'bishop',
+  'king',
+  'queen'
+].includes(role);
+
+export const getPieceState = (role, color) => ({
+  role,
+  color
+});
+
 export const getEmptyBoard = () => {
   const board = {};
 
