@@ -66,6 +66,7 @@ Props you may require/may need to specify:
 * `orientation` - white/black point of view
 * `highLightSelections` - highlight selected pieces
 * `highLightOptions` - highlight possible move options for selected piece
+* `colors` - defines board's main elements color (black/white/selections color)
 
 # License
 Chessy Board is [MIT Licensed](https://github.com/danpora/chessy-board/blob/master/LICENSE).
