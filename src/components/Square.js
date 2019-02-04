@@ -15,17 +15,19 @@ export function Square (props) {
 }
 
 function SquareWrap (props) {
+  const { onClick = () => {}, color, location, elements } = props;
+
   const selectedClass = props.highlight.isSelected && styles.selectedHighlight;
   const optionClass = props.highlight.isOption && styles.optionHighlight;
 
   return (
     <div 
-      id={`${props.location.col}${props.location.row}`}
-      className={`${styles[props.color]} ${selectedClass} ${optionClass}`}
-      onClick={props.onClick.bind(null, {
-        row: props.location.row, 
-        col: props.location.col, 
-        elements: props.elements
+      id={`${location.col}${location.row}`}
+      className={`${styles[color]} ${selectedClass} ${optionClass}`}
+      onClick={onClick.bind(null, {
+        row: location.row, 
+        col: location.col, 
+        elements: elements
       })}   
     >
       {props.children}
