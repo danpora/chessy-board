@@ -7,14 +7,7 @@ import styles from './Board.css';
 
 function Board (props) {
   
-  const {
-    className = '',
-    matrix,
-    orientation,
-    onClick = () => {},
-    highLightSelections,
-    highLightOptions,
-  } = props;
+  const { className = '' } = props;
 
   return (
     <div className={`${className} ${styles.topContainer}`}>
@@ -26,11 +19,7 @@ function Board (props) {
       >
         <div className={styles.gridContainer}>
           <BoardGrid 
-            matrix={matrix}
-            orientation={orientation}
-            onClick={onClick}
-            highLightOptions={highLightOptions}
-            highLightSelections={highLightSelections}
+            {...props}
           />
           {props.isLoading && (
             <div
@@ -44,7 +33,8 @@ function Board (props) {
 }
 
 function BoardGrid (props) {
-  const { matrix, orientation, onClick, highLightSelections, highLightOptions } = props;
+  const { matrix, orientation, onClick, 
+          highLightSelections, highLightOptions } = props;
 
   const { orientedRowIndexes, orientedColIndexes } = getOrientedBoardIndexes(orientation);
   
