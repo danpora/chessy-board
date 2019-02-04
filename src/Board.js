@@ -5,43 +5,62 @@ import { getOrientedBoardIndexes, getSquareColor } from './utils';
 
 import styles from './Board.css';
 
-function Board (props) {
-  
-  const { className = '' } = props;
+class Board extends React.Component {
 
-  return (
-    <div className={`${className} ${styles.topContainer}`}>
-      <div
-        className={`
+  componentDidMount() {
+    const root = document.documentElement;
+
+    if (this.props.style) {
+      const { white, black, selected, option } = this.props.style;
+
+      white && root.style.setProperty('--white', white);
+      black && root.style.setProperty('--black', black);
+      selected && root.style.setProperty('--selected', selected);
+      option && root.style.setProperty('--option', option);
+    }
+  }
+
+  render() {
+    const { className = '' } = this.props;
+
+    return (
+      <div className={`${className} ${styles.topContainer}`}>
+        <div
+          className={`
           ${styles.boardContainer} 
-          ${styles[props.isLoading ? 'loading' : null]}
+          ${styles[this.props.isLoading ? 'loading' : null]}
         `}
-      >
-        <div className={styles.gridContainer}>
-          <BoardGrid 
-            {...props}
-          />
-          {props.isLoading && (
-            <div
-              className={`${styles.spinner} ${styles['spinner-container']}`}
-            />
-          )}
+        >
+          <div className={styles.gridContainer}>
+            <BoardGrid {...this.props} />
+            {this.props.isLoading && (
+              <div
+                className={`${styles.spinner} ${styles['spinner-container']}`}
+              />
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-function BoardGrid (props) {
-  const { matrix, orientation, onClick, 
-          highLightSelections, highLightOptions } = props;
+function BoardGrid(props) {
+  const {
+    matrix,
+    orientation,
+    onClick,
+    highLightSelections,
+    highLightOptions,
+  } = props;
 
-  const { orientedRowIndexes, orientedColIndexes } = getOrientedBoardIndexes(orientation);
-  
+  const { orientedRowIndexes, orientedColIndexes } = getOrientedBoardIndexes(
+    orientation,
+  );
+
   const squares = [];
   for (let row of orientedRowIndexes) {
     for (let col of orientedColIndexes) {
-
       const squareName = `${col}${row}`;
       const squareColor = getSquareColor(col, row);
       const squareElements = matrix && matrix[row] && matrix[row][col];
