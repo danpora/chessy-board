@@ -5,17 +5,17 @@
 }
 
 .white {
-  background-color: white;
+  background-color: var(--white);
 }
 
 .black {
-  background-color: black;
+  background-color: var(--black);
 }
 
 .selectedHighlight {
-  background-color: #53a1a1;
+  background-color: var(--selected);
 }
 
 .optionHighlight {
-  background-color: #435f38;
+  background-color: var(--option);
 }
