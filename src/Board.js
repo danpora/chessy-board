@@ -10,8 +10,8 @@ class Board extends React.Component {
   componentDidMount() {
     const root = document.documentElement;
 
-    if (this.props.style) {
-      const { white, black, selected, option } = this.props.style;
+    if (this.props.colors) {
+      const { white, black, selected, option } = this.props.colors;
 
       white && root.style.setProperty('--white', white);
       black && root.style.setProperty('--black', black);
