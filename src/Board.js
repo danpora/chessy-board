@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 
 import { Square } from './components/Square';
 import { getOrientedBoardIndexes, getSquareColor } from './utils';
@@ -24,18 +25,18 @@ class Board extends React.Component {
     const { className = '' } = this.props;
 
     return (
-      <div className={`${className} ${styles.topContainer}`}>
+      <div className={cn(className, styles.topContainer)}>
         <div
-          className={`
-          ${styles.boardContainer} 
-          ${styles[this.props.isLoading ? 'loading' : null]}
-        `}
+          className={cn(
+              styles.boardContainer, 
+              styles[this.props.isLoading ? 'loading' : null]
+          )}
         >
           <div className={styles.gridContainer}>
             <BoardGrid {...this.props} />
             {this.props.isLoading && (
               <div
-                className={`${styles.spinner} ${styles['spinner-container']}`}
+                className={cn(styles.spinner, styles['spinner-container'])}
               />
             )}
           </div>

@@ -1,4 +1,6 @@
 import React from 'react';
+import cn from 'classnames';
+
 import { Piece } from './Piece'
 import styles from './Square.css'
 
@@ -23,7 +25,7 @@ function SquareWrap (props) {
   return (
     <div 
       id={`${location.col}${location.row}`}
-      className={`${styles[color]} ${selectedClass} ${optionClass}`}
+      className={cn(styles[color], selectedClass, optionClass)}
       onClick={onClick.bind(null, {
         row: location.row, 
         col: location.col, 
